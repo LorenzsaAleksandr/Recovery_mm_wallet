@@ -100,7 +100,6 @@ async def main():
             # Заполнение seed-фразы
             for index, word in enumerate(recovery_phrase):
                 seed_input = mm_page.get_by_test_id(f"import-srp__srp-word-{index}")
-                await expect(seed_input).to_be_visible()
                 await seed_input.fill(word)
 
             # Подтверждаем восстановление фразы
