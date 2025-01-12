@@ -1,4 +1,3 @@
-debug_log = True
+debug_log = False
 mm_password = 'zgtpc83nc6CE4CE'
-# Путь к recovery_seed.txt
 recovery_seed = "recovery_seed.txt"
