@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright, expect
 from loguru import logger
 import os
 import sys
-from config import mm_password, recovery_seed, debug_log
+from config import mm_password, recovery_seed, debug_log, headless_mode, slow_mode
 from logo import LOGO
 
 # Удаляем старые логгеры
@@ -74,8 +74,10 @@ async def wait_for_load(page, state='domcontentloaded'):
 async def main():
     async with async_playwright() as p:
         context = await p.chromium.launch_persistent_context(
-            '',
-            headless=False,
+            user_data_dir='',
+            channel='chrome',
+            headless=headless_mode,
+            slow_mo=slow_mode,
             args=[
                 f"--disable-extensions-except={extention_path}",
                 f"--load-extension={extention_path}",
@@ -123,7 +125,7 @@ async def main():
 
             logger.info("Импорт кошелька завершён успешно!")
             await mm_page.close()
-            await asyncio.sleep(10)
+            await asyncio.sleep(0.1)
         except Exception as e:
             logger.error(f"Ошибка в процессе выполнения: {e}")
         finally:
