@@ -1,2 +1,2 @@
-python recovery_mm.py
+python main.py
 pause
