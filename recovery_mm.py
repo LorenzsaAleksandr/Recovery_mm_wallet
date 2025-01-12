@@ -4,6 +4,7 @@ from loguru import logger
 import os
 import sys
 from config import mm_password, recovery_seed, debug_log
+from logo import LOGO
 
 # Удаляем старые логгеры
 logger.remove()
@@ -129,4 +130,5 @@ async def main():
             await context.close()
 
 if __name__ == '__main__':
+    print(LOGO)
     asyncio.run(main())
